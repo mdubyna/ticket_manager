@@ -40,7 +40,10 @@ def groups_detail(group_id):
 @roles_accepted("admin")
 def groups_update(group_id):
     group = Group.query.get_or_404(group_id)
-    users = User.query.filter(or_(User.group_id == group_id, User.group_id == None)).all()
+    users = User.query.filter(or_(
+        User.group_id == group_id,
+        User.group_id == None
+    )).all()
     form = GroupForm(obj=group, users=users)
     if form.validate_on_submit():
         group.name = form.name.data

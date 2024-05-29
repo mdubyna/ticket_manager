@@ -30,10 +30,14 @@ class User(db.Model, UserMixin):
     fs_uniquifier = db.Column(db.String(255), unique=True, nullable=False)
 
     roles = db.relationship(
-        "Role", secondary="roles_users", backref=db.backref("users", lazy="dynamic")
+        "Role",
+        secondary="roles_users",
+        backref=db.backref("users", lazy="dynamic")
     )
     tickets = db.relationship(
-        "Ticket", secondary="tickets_users", backref=db.backref("users", lazy="dynamic")
+        "Ticket",
+        secondary="tickets_users",
+        backref=db.backref("users", lazy="dynamic")
     )
     group_id = db.Column(
         "group_id", db.Integer, db.ForeignKey("group.id")

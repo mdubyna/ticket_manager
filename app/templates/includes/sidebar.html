@@ -8,7 +8,7 @@
 
   <br>
 
-  <li class="list-group-item"><a href="{{ url_for('hello') }}">Home</a></li>
+  <li class="list-group-item"><a href="{{ url_for('home_bp.home') }}">Home</a></li>
   <li class="list-group-item"><a href="{{ url_for('groups_bp.groups_list') }}">Groups</a></li>
   <li class="list-group-item"><a href="{{ url_for('tickets_bp.tickets_list') }}">Tickets</a></li>
   {% if "admin" in current_user.roles %}
