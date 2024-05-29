@@ -12,7 +12,13 @@ from app.models import TicketStatus, Group, User
 
 
 class TicketForm(FlaskForm):
-    title = StringField("Title", validators=[DataRequired(), Length(min=1, max=80)])
+    """
+    Initial form for tickets
+    """
+    title = StringField(
+        "Title",
+        validators=[DataRequired(), Length(min=1, max=80)]
+    )
     status = SelectField(
         "Status",
         choices=[(tag.name, tag.value) for tag in TicketStatus],
@@ -24,14 +30,23 @@ class TicketForm(FlaskForm):
 
 
 class CreateTicketForm(TicketForm):
+    """
+    Form for creating ticket and validating data
+    """
     group_id = SelectField("Group", validators=[DataRequired()])
 
     def __init__(self, *args, **kwargs):
         super(TicketForm, self).__init__(*args, **kwargs)
-        self.group_id.choices = [(group.id, group.name) for group in Group.query.all()]
+        self.group_id.choices = [
+            (group.id, group.name)
+            for group in Group.query.all()
+        ]
 
 
 class UpdateTicketForm(TicketForm):
+    """
+    Form for updating ticket and validating data
+    """
     users = SelectMultipleField(
         "Users",
         coerce=int,
@@ -40,7 +55,9 @@ class UpdateTicketForm(TicketForm):
     )
 
     def __init__(self, *args, **kwargs):
-        group_users = User.query.filter_by(group_id=kwargs["obj"].group_id).all()
+        group_users = User.query.filter_by(
+            group_id=kwargs["obj"].group_id
+        ).all()
         super(TicketForm, self).__init__(*args, **kwargs)
         self.users.choices = [
             (user.id, user.email)

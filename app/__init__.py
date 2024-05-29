@@ -13,7 +13,12 @@ from app.models import db, User, Role
 migrate = Migrate()
 
 
-def create_app():
+def create_app() -> Flask:
+    """
+    Function for app creating
+    :return:
+    Flask app
+    """
     app = Flask(__name__)
     app.config.from_object(Config)
 
@@ -35,7 +40,15 @@ def create_app():
     return app
 
 
-def create_initial_data(user_datastore):
+def create_initial_data(
+        user_datastore: SQLAlchemySessionUserDatastore
+) -> None:
+    """
+    Function for creating initial data
+    :param user_datastore:
+    :return:
+    None
+    """
     roles = [
         {"name": "admin", "description": "Administrator"},
         {"name": "manager", "description": "Manager"},

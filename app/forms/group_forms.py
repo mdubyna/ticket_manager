@@ -7,11 +7,15 @@ from wtforms import (
 )
 from wtforms.validators import DataRequired, Length
 
-from app.models import User
-
 
 class GroupForm(FlaskForm):
-    name = StringField("Name", validators=[DataRequired(), Length(min=1, max=80)])
+    """
+    Form for creating and updating group and validating data
+    """
+    name = StringField(
+        "Name",
+        validators=[DataRequired(), Length(min=1, max=80)]
+    )
     users = SelectMultipleField(
         "Users",
         coerce=int,

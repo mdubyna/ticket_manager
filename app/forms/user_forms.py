@@ -1,10 +1,12 @@
 from flask_wtf import FlaskForm
 from wtforms import SelectMultipleField, SubmitField, widgets
-from wtforms.validators import DataRequired
 from app.models import Role
 
 
 class UserRolesForm(FlaskForm):
+    """
+    Form for managing user roles
+    """
     roles = SelectMultipleField("Roles",
                                 coerce=int,
                                 option_widget=widgets.CheckboxInput(),
@@ -13,4 +15,7 @@ class UserRolesForm(FlaskForm):
 
     def __init__(self, *args, **kwargs):
         super(UserRolesForm, self).__init__(*args, **kwargs)
-        self.roles.choices = [(role.id, role.name) for role in Role.query.all()]
+        self.roles.choices = [
+            (role.id, role.name)
+            for role in Role.query.all()
+        ]

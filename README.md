@@ -14,6 +14,15 @@
  python -m run
 ```
 
+## Run with docker
+Clone repo and open project dir
+
+```
+ docker build -t docker-tickets .
+ docker run -p 5000:5000 docker-tickets
+
+```
+
 ## How to get access:
 
 You have already created 3 users(you can create new users login -> register):

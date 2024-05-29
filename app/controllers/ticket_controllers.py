@@ -62,12 +62,19 @@ def tickets_update(ticket_id):
 
         db.session.commit()
         flash("Ticket updated successfully!", "success")
-        return redirect(url_for("tickets_bp.tickets_detail", ticket_id=ticket_id))
+        return redirect(url_for(
+            "tickets_bp.tickets_detail",
+            ticket_id=ticket_id
+        ))
 
     form.users.data = [user.id for user in ticket.users]
     roles = [role.name for role in current_user.roles]
 
-    return render_template("tickets/tickets_update.html", form=form, roles=roles)
+    return render_template(
+        "tickets/tickets_update.html",
+        form=form,
+        roles=roles
+    )
 
 
 @roles_accepted("admin")
@@ -75,5 +82,5 @@ def tickets_delete(ticket_id):
     ticket = Ticket.query.get_or_404(ticket_id)
     db.session.delete(ticket)
     db.session.commit()
-    flash("Ticket deleted successfully!", 'success')
+    flash("Ticket deleted successfully!", "success")
     return redirect(url_for("tickets_bp.tickets_list"))

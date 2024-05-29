@@ -8,4 +8,13 @@ from app.models.models_group import Group
 from app.models.enums import TicketStatus
 
 
-__all__ = ["db", "User", "Role", "Ticket", "RoleUser", "Group", "TicketUser", "TicketStatus"]
+__all__ = [
+    "db",
+    "User",
+    "Role",
+    "Ticket",
+    "RoleUser",
+    "Group",
+    "TicketUser",
+    "TicketStatus"
+]
