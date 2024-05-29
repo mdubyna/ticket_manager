@@ -6,6 +6,7 @@ from config import Config
 from app.routes.tickets_bp import tickets_bp
 from app.routes.groups_bp import groups_bp
 from app.routes.users_bp import users_bp
+from app.routes.home_page import home_bp
 from app.models import db, User, Role
 
 
@@ -19,6 +20,7 @@ def create_app():
     app.register_blueprint(tickets_bp, url_prefix="/")
     app.register_blueprint(groups_bp, url_prefix="/")
     app.register_blueprint(users_bp, url_prefix="/")
+    app.register_blueprint(home_bp, url_prefix="/")
 
     db.init_app(app)
     migrate.init_app(app, db)
