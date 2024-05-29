@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Create ticket</h1>
+  <h1>Update Ticket</h1>
   <form method="post">
     {{ form.hidden_tag() }}
     <div>
@@ -25,14 +25,23 @@
         <span style="color: red;">[{{ error }}]</span>
       {% endfor %}
     </div>
-    <div>
-      {{ form.group_id.label }}<br>
-      {{ form.group_id() }}<br>
-      {% for error in form.group_id.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-      {% endfor %}
-    </div>
+    {% if "manager" in roles or "admin" in roles%}
+      {% if form.users.choices %}
+        <div>
+          {{ form.users.label }}<br>
+          {% for subfield in form.users %}
+            <div>
+              {{ subfield() }} {{ subfield.label }}
+            </div>
+          {% endfor %}<br>
+        </div>
+      {% else %}
+        <p>
+          There are no users in group
+        </p>
+      {% endif %}
+    {% endif %}
     {{ form.submit() }}
   </form>
-  <a href="{{ url_for('tickets_bp.tickets_list') }}">Back to list</a>
+  <a href="{{ url_for('tickets_bp.tickets_list') }}">Back to ticket list</a>
 {% endblock %}

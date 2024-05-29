@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Items</h1>
+  <h1>Tickets</h1>
+  {% if "admin" in current_user.roles %}
+    <a href="{{ url_for('tickets_bp.tickets_create') }}">Create new ticket</a>
+  {% endif %}
   <ul>
     {% for ticket in tickets %}
       <li>
-        {{ ticket.title }}
+        <a href="{{ url_for('tickets_bp.tickets_detail', ticket_id=ticket.id) }}">{{ ticket.title }}</a> - {{ ticket.status.value }}
       </li>
     {% endfor %}
   </ul>

@@ -1,0 +1,17 @@
+<ul class="sidebar-nav list-group">
+  {% if current_user.is_authenticated %}
+    <li class="list-group-item">User: {{ current_user.email }} - {{ current_user.roles }}</li>
+    <li class="list-group-item"><a href="{{ url_for('security.logout') }}">Logout</a></li>
+  {% else %}
+    <li class="list-group-item"><a href="{{ url_for('security.login') }}">Login</a></li>
+  {% endif %}
+
+  <br>
+
+  <li class="list-group-item"><a href="{{ url_for('hello') }}">Home</a></li>
+  <li class="list-group-item"><a href="{{ url_for('groups_bp.groups_list') }}">Groups</a></li>
+  <li class="list-group-item"><a href="{{ url_for('tickets_bp.tickets_list') }}">Tickets</a></li>
+  {% if "admin" in current_user.roles %}
+    <li class="list-group-item"><a href="{{ url_for('users_bp.users_list') }}">Users</a></li>
+  {% endif %}
+</ul>
