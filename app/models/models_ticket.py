@@ -15,7 +15,10 @@ class Ticket(db.Model):
     __tablename__ = "ticket"
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80), nullable=False)
-    status = db.Column(SQLAlchemyEnum(TicketStatus), nullable=False, server_default="PENDING")
+    status = db.Column(
+        SQLAlchemyEnum(TicketStatus),
+        nullable=False,
+        server_default="PENDING")
     note = db.Column(db.String(255))
 
     group_id = db.Column(

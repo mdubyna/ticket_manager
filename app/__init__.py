@@ -45,17 +45,20 @@ def create_initial_data(user_datastore):
     users = [
         {
             "email": "admin@admin.com",
-            "password": "$2b$12$sCPhUXUnMqhAAJBiCXnyNeQiAmeNX.CuQcKGkIXdieL7wmeJA.UUO",
+            "password": "$2b$12$sCPhUXUnMqhAAJBiCX"
+                        "nyNeQiAmeNX.CuQcKGkIXdieL7wmeJA.UUO",
             "roles": ["admin"]
         },
         {
             "email": "manager@manager.com",
-            "password": "$2b$12$sCPhUXUnMqhAAJBiCXnyNeQiAmeNX.CuQcKGkIXdieL7wmeJA.UUO",
+            "password": "$2b$12$sCPhUXUnMqhAAJBiCX"
+                        "nyNeQiAmeNX.CuQcKGkIXdieL7wmeJA.UUO",
             "roles": ["manager"]
         },
         {
             "email": "analyst@analyst.com",
-            "password": "$2b$12$sCPhUXUnMqhAAJBiCXnyNeQiAmeNX.CuQcKGkIXdieL7wmeJA.UUO",
+            "password": "$2b$12$sCPhUXUnMqhAAJBiCX"
+                        "nyNeQiAmeNX.CuQcKGkIXdieL7wmeJA.UUO",
             "roles": ["analyst"]
         },
     ]
