@@ -2,6 +2,9 @@ from app.models import db
 
 
 class Group(db.Model):
+    """
+    Model for groups managing
+    """
     __tablename__ = "group"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True, nullable=False)

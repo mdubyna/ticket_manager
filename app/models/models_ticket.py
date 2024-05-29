@@ -5,6 +5,9 @@ from app.models.enums import TicketStatus
 
 
 class TicketUser(db.Model):
+    """
+    Model for managing ticket users
+    """
     __tablename__ = "tickets_users"
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column("user_id", db.Integer, db.ForeignKey("user.id"))
@@ -12,6 +15,9 @@ class TicketUser(db.Model):
 
 
 class Ticket(db.Model):
+    """
+    Model for managing tickets
+    """
     __tablename__ = "ticket"
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80), nullable=False)

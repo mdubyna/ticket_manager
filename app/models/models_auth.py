@@ -4,6 +4,9 @@ from app.models import db
 
 
 class RoleUser(db.Model):
+    """
+    Model for managing users roles
+    """
     __tablename__ = "roles_users"
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column("user_id", db.Integer, db.ForeignKey("user.id"))
@@ -11,6 +14,9 @@ class RoleUser(db.Model):
 
 
 class Role(db.Model, RoleMixin):
+    """
+    Model for managing roles
+    """
     __tablename__ = "role"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True)
@@ -21,6 +27,9 @@ class Role(db.Model, RoleMixin):
 
 
 class User(db.Model, UserMixin):
+    """
+    Model for managing users
+    """
     __tablename__ = "user"
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), unique=True)
